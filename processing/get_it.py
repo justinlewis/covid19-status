@@ -143,6 +143,10 @@ if __name__ == '__main__':
     presumed_cases = get_presumed_positive_cases()
     get_visitors_presumed_positive(presumed_cases)
 
+    f = open("../data/colorado.json", "w")
+    f.write(json.dumps(presumed_cases))
+    f.close()
+
     print(presumed_cases)
 
 
