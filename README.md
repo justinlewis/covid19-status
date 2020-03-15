@@ -20,7 +20,7 @@ Create a basic visualization
 ### How To Dev
 Thank you!
 
-## Setup local
+#### Setup local
 Setup a simple local Node server to help with localhost cross domain issues.
 1. Setup local NPM HTTP server with 'sudo npm i http-server -g'
 2. CD into root project directory and run 'HTTP-SERVER'
