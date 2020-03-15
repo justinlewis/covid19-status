@@ -62,6 +62,21 @@
         height: 100%;
       }
 
+      .legend {
+        background-color: #fff;
+        border-bottom: 1px solid #ccc;
+        line-height: 26px;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: black;
+        border-radius: 4px;
+        padding: 5px;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+        text-align: left;
+        max-width: 125px;
+      }
+
     </style>
   </head>
 
@@ -125,7 +140,7 @@
                d > 20  ? '#FC4E2A' :
                d > 10   ? '#FD8D3C' :
                d > 5   ? '#FEB24C' :
-               d > 1   ? '#FED976' :
+               d > 0   ? '#FED976' :
                           'none';
       }
 
@@ -145,6 +160,29 @@
           layer.bindPopup('<h5>'+feature.properties.name+' County </h5><h5>'+feature.properties.covidcases+' cases presumed positive</h5>');
         }
       }).addTo(map);
+
+
+      var legend = L.control({position: 'bottomleft'});
+      legend.onAdd = function (map) {
+
+      var div = L.DomUtil.create('div', 'legend');
+      labels = ['<strong>Number Of Positive Cases</strong>'],
+      categories = [{'None': 0},{'> 0':1},{'> 5':6},{'> 10':11},{'> 20':21}, {'> 50':51}, {'> 100':101}, {'> 200':201}];
+
+      for (var i = 0; i < categories.length; i++) {
+
+              div.innerHTML +=
+              labels.push(
+                  '<svg width="40" height="20" xmlns="http://www.w3.org/2000/svg">' +
+                      '<rect x="0" width="20" height="20" rx="3" stroke="grey" fill="' + getColor(categories[i][Object.keys(categories[i])[0]]) + '"/>' +
+                  '</svg>' +
+              (categories[i] ? Object.keys(categories[i])[0] : '+'));
+
+          }
+          div.innerHTML = labels.join('<br>');
+      return div;
+      };
+      legend.addTo(map);
 
     </script>
 
