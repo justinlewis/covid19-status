@@ -145,7 +145,7 @@ if __name__ == '__main__':
 
     f = open("../data/colorado.js", "w")
     jsonAsStr = json.dumps(presumed_cases)
-    jsonAsStr = "var counties = " + jsonAsStr
+    jsonAsStr = "var coloradocovid = " + jsonAsStr
     f.write(jsonAsStr)
     f.close()
 
