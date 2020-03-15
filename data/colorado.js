@@ -1,0 +1,1 @@
+var coloradocovid = {"presumed": {"Adams": 6, "Arapahoe": 10, "Denver": 21, "Douglas": 4, "Eagle": 20, "El Paso": 4, "Gunnison": 6, "Jefferson": 9, "Larimer": 1, "Mesa": 1, "Pitkin": 11, "Pueblo": 1, "Summit": 2, "Weld": 3, "Routt": 1}, "last_update": "2020-03-14 16:04:38.603119"}
