@@ -1,7 +1,5 @@
 # covid19-status
 
-# SEE gh-pages branch for current work
-
 ## Visualization
 * https://justinlewis.github.io/covid19-status-colorado/
 
