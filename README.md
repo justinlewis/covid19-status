@@ -24,3 +24,10 @@ Thank you!
 Setup a simple local Node server to help with localhost cross domain issues.
 1. Setup local NPM HTTP server with 'sudo npm i http-server -g'
 2. CD into root project directory and run 'http-server'
+
+#### Updating data
+To keep this simple we're hosting on Github Pages and therefore don't have a database or ability to run automatic data updates. However, updates can be done manually on a local dev environment easily.
+1. Pull the latest code.
+2. Run the get_it.py (no params needed) file which will update colorado.js with the latest data.
+3. Push the updated data to the repository.
+4. Bam! You just helped your community stay up to date!
