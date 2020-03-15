@@ -1,5 +1,8 @@
 # covid19-status
 
+## Visualization
+* https://justinlewis.github.io/covid19-status-colorado/
+
 ### About
 The Colorado Department of Public Health publication for providing status updates for COVID-19 is overloaded and not the best visualization. Let's make it better.
 
