@@ -77,6 +77,22 @@
         max-width: 125px;
       }
 
+      #last-update-label {
+        position: absolute;
+        z-index: 9999;
+        background-color: #fff;
+        border-bottom: 1px solid #ccc;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: black;
+        border-radius: 4px;
+        padding: 5px;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+        top: 10px;
+        right: 12px;
+      }
+
     </style>
   </head>
 
@@ -99,6 +115,7 @@
       <div class="row map-container">
         <div class="col-sm">
           <!-- <h1 class="f3 ma0">COVID-19 Status - Colorado</h1> -->
+          <h4 id="last-update-label"></h4>
           <div id="map" class="map"></div>
         </div>
       </div>
@@ -107,7 +124,7 @@
 
     <script>
 
-      var labelTextCollision = new L.LabelTextCollision({collisionFlg : true});
+      document.getElementById('last-update-label').innerText = "Last update: " + coloradocovid.last_source_update
 
     	var map = L.map('map').setView([39.115145, -105.804618], 7);
 
@@ -126,7 +143,7 @@
       counties.features.forEach((cty, i) => {
         if(coloradocovid.presumed[cty.properties.name]){
           cty.properties.covidcases = coloradocovid.presumed[cty.properties.name];
-          console.log(cty.properties.name)
+          // console.log(cty.properties.name)
         }
         else{
           cty.properties.covidcases = 0;

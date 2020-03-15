@@ -91,6 +91,7 @@ def get_presumed_positive_cases():
     data = {}
     data["presumed"] = {}
     data["last_update"] = last_update
+    data["last_source_update"] = ""
 
     for li in soup.find_all('li'):
         contents = li.contents
@@ -138,10 +139,19 @@ def get_visitors_presumed_positive(data):
                             data['presumed'][county] = count
 
 
+def get_last_updated(data):
+    for p in soup.find_all('p', class_='subtitle'):
+        contents = p.contents
+
+        for cont in contents:
+            text = cont.string
+            data["last_source_update"] = text.replace("UPDATED: ", "")
+
 
 if __name__ == '__main__':
     presumed_cases = get_presumed_positive_cases()
     get_visitors_presumed_positive(presumed_cases)
+    get_last_updated(presumed_cases)
 
     f = open("../data/colorado.js", "w")
     jsonAsStr = json.dumps(presumed_cases)
