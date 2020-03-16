@@ -103,6 +103,7 @@ def get_presumed_positive_cases():
                 if county in text:
                     items = text.split()
 
+                    count = 0
                     try:
                         count = int(items[len(items) - 1])
                     except ValueError:
@@ -125,6 +126,7 @@ def get_visitors_presumed_positive(data):
                     if county in text:
 
                         items = text.split()
+                        count = 0
                         try:
                             count = int(items[len(items) - 1])
                         except ValueError:
@@ -137,6 +139,33 @@ def get_visitors_presumed_positive(data):
                             data['presumed'][county] = int(existing) + count
                         else:
                             data['presumed'][county] = count
+
+def get_age_breakdown(data):
+    query_text = ["Teenage", "20s", "30s", "40x", "50s", "60s", "70s", "80s"]
+    data["age_breakdown"] = []
+    for p in soup.find_all('p'):
+        contents = p.contents
+
+        for cont in contents:
+            text = cont.string
+
+            for age_cat in query_text:
+                if(text is not None):
+                    if age_cat in text:
+
+                        cat = {}
+
+                        items = text.split()
+                        count = 0
+                        try:
+                            count = int(items[len(items) - 1])
+                        except ValueError:
+                            print(text + " <-- not a number")
+
+                        cat["category"] = age_cat
+                        cat["count"] = count
+
+                        data["age_breakdown"].append(cat)
 
 
 def get_last_updated(data):
@@ -152,6 +181,7 @@ if __name__ == '__main__':
     presumed_cases = get_presumed_positive_cases()
     get_visitors_presumed_positive(presumed_cases)
     get_last_updated(presumed_cases)
+    get_age_breakdown(presumed_cases)
 
     f = open("../data/colorado.js", "w")
     jsonAsStr = json.dumps(presumed_cases)
