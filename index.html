@@ -157,7 +157,11 @@
           </div>
           <div id="map" class="map"></div>
 
+          <div id="legend" class="legend">
+            <h6>Positive Cases</h6>
+          </div>
           <div id="chart-panel">
+            <h6>Age Distribution</h6>
             <svg id="age-chart" width="400" height="150"></svg>
           </div>
 
@@ -229,22 +233,23 @@
       var legend = L.control({position: 'bottomleft'});
       legend.onAdd = function (map) {
 
-      var div = L.DomUtil.create('div', 'legend');
-      labels = ['<strong>Number Of Positive Cases</strong>'],
-      categories = [{'None': 0},{'> 0':1},{'> 5':6},{'> 10':11},{'> 20':21}, {'> 50':51}, {'> 100':101}, {'> 200':201}];
+        let div = document.getElementById("legend")
+        labels = []
+        // var div = L.DomUtil.create('div', 'legend');
+        // labels = ['<h6>Number Of Positive Cases</h6>'],
+        categories = [{'None': 0},{'> 0':1},{'> 5':6},{'> 10':11},{'> 20':21}, {'> 50':51}, {'> 100':101}, {'> 200':201}];
 
-      for (var i = 0; i < categories.length; i++) {
+        for (var i = 0; i < categories.length; i++) {
+            labels.push(
+                '<svg width="40" height="20" xmlns="http://www.w3.org/2000/svg">' +
+                    '<rect x="0" width="20" height="20" rx="3" stroke="grey" fill="' + getColor(categories[i][Object.keys(categories[i])[0]]) + '"/>' +
+                '</svg>' +
+            (categories[i] ? Object.keys(categories[i])[0] : '+'));
 
-              div.innerHTML +=
-              labels.push(
-                  '<svg width="40" height="20" xmlns="http://www.w3.org/2000/svg">' +
-                      '<rect x="0" width="20" height="20" rx="3" stroke="grey" fill="' + getColor(categories[i][Object.keys(categories[i])[0]]) + '"/>' +
-                  '</svg>' +
-              (categories[i] ? Object.keys(categories[i])[0] : '+'));
-
-          }
-          div.innerHTML = labels.join('<br>');
-      return div;
+        }
+        console.log(div.innerHTML)
+        div.innerHTML = div.innerHTML += labels.join('<br>');
+        return div;
       };
       legend.addTo(map);
 
