@@ -24,8 +24,8 @@ var coloradocovid = {
     "Weld": 9,
     "Yuma": 1
   },
-  "last_update": "2020-03-15",
-  "last_source_update": "March 18, 6:00 p.m.",
+  "last_update": "2020-03-19",
+  "last_source_update": "March 19, 5:00 p.m.",
   "age_breakdown": [
     {
       "category": "0-9",

@@ -99,6 +99,26 @@
         font-size: 12px;
       }
 
+      #hover-box {
+        position: absolute;
+        z-index: 9999;
+        background-color: #fff;
+        border-bottom: 1px solid #ccc;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        color: black;
+        border-radius: 4px;
+        padding: 5px;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+        bottom: 10px;
+        left: 580px;
+        display: none;
+      }
+      #hover-box .hover-text {
+        font-size: 12px;
+      }
+
       #chart-panel {
         position: absolute;
         z-index: 9999;
@@ -155,6 +175,12 @@
               <b>NOTE:</b> These numbers are NOT perfect because we are trying to interpolate the source data which changes often.
             </p>
           </div>
+
+          <div id="hover-box">
+            <h5 id="hover-title"></h5>
+            <p id="hover-text" class="info-text"></p>
+          </div>
+
           <div id="map" class="map"></div>
 
           <div id="legend" class="legend">
@@ -171,6 +197,11 @@
     </div>
 
     <script>
+
+    function close() {
+      console.log("close")
+      document.getElementById("info-box").style.display = 'none'
+    }
 
       ////
       // map
@@ -218,13 +249,34 @@
               weight: 1,
               opacity: 1,
               color: 'grey',
-              fillOpacity: 0.7
+              fillOpacity: 0.9
           };
       }
 
       L.geoJSON(counties, {
         style: style,
         onEachFeature: function (feature, layer) {
+          layer.on('mouseover', function () {
+            this.setStyle({
+              'fillOpacity': 0.8
+            });
+
+            document.getElementById("hover-box").style.display = "block";
+            document.getElementById("hover-title").innerHTML = feature.properties.name
+            document.getElementById("hover-text").innerHTML = '<b>' + feature.properties.covidcases + '</b> positive cases'
+          });
+          layer.on('mouseout', function () {
+            this.setStyle({
+              'fillOpacity': 0.7
+            });
+
+            document.getElementById("hover-box").style.display = "none";
+            document.getElementById("hover-title").innerHTML = null
+            document.getElementById("hover-text").innerHTML = null
+          });
+
+
+
           layer.bindPopup('<h5>'+feature.properties.name+' County </h5><h5>'+feature.properties.covidcases+' positive cases</h5>');
         }
       }).addTo(map);
@@ -247,7 +299,7 @@
             (categories[i] ? Object.keys(categories[i])[0] : '+'));
 
         }
-        console.log(div.innerHTML)
+
         div.innerHTML = div.innerHTML += labels.join('<br>');
         return div;
       };
@@ -260,9 +312,9 @@
 
       let ageData = coloradocovid.age_breakdown
       ageData.sort((a, b) => (a.category > b.category) ? 1 : -1)
-      teenCat = ageData[ageData.length-1]
-      ageData.splice(ageData.length-1, 1)
-      ageData.unshift(teenCat)
+      // teenCat = ageData[ageData.length-1]
+      // ageData.splice(ageData.length-1, 1)
+      // ageData.unshift(teenCat)
 
       var svg = d3.select("#age-chart"),
           margin = {top: 20, right: 20, bottom: 30, left: 50},
