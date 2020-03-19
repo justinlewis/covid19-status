@@ -14,7 +14,7 @@ var coloradocovid = {
     "Jefferson": 36,
     "Larimer": 5,
     "Mesa": 1,
-    "Morgan", 1,
+    "Morgan": 1,
     "Pitkin": 12,
     "Pueblo": 1,
     "Summit": 5,
