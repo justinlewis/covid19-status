@@ -1,30 +1,27 @@
 var coloradocovid = {
   "presumed": {
-    "Adams": 12,
-    "Arapahoe": 29,
-    "Boulder": 16,
-    "Broomfield": 2,
+    "Adams": 10,
+    "Arapahoe": 22,
+    "Boulder": 11,
     "Clear Creek": 2,
-    "Crowley": 1,
-    "Denver": 67,
-    "Douglas": 17,
-    "Eagle": 61,
-    "El Paso": 27,
-    "Garfield": 4,
-    "Grand": 3,
+    "Denver": 49,
+    "Douglas": 14,
+    "Eagle": 51,
+    "El Paso": 15,
+    "Garfield": 3,
+    "Grand": 1,
     "Gunnison": 13,
-    "Jefferson": 37,
-    "Larimer": 7,
+    "Jefferson": 36,
+    "Larimer": 5,
     "Mesa": 1,
-    "Morgan": 2,
-    "Park": 1,
-    "Pitkin": 14,
-    "Pueblo": 2,
-    "Summit": 7,
+    "Morgan": 1,
+    "Pitkin": 12,
+    "Pueblo": 1,
+    "Summit": 5,
     "Weld": 5,
     "Routt": 2,
     "Route": 2,
-    "Weld": 15,
+    "Weld": 9,
     "Yuma": 1
   },
   "last_update": "2020-03-19",
@@ -32,39 +29,39 @@ var coloradocovid = {
   "age_breakdown": [
     {
       "category": "0-9",
-      "count": 4
+      "count": 2
     },
     {
       "category": "10-19",
-      "count": 15
+      "count": 11
     },
     {
       "category": "20-29",
-      "count": 55
-    },
-    {
-      "category": "30-39",
-      "count": 65
-    },
-    {
-      "category": "40-49",
-      "count": 62
-    },
-    {
-      "category": "50-59",
-      "count": 65
-    },
-    {
-      "category": "60-69",
-      "count": 51
-    },
-    {
-      "category": "70-79",
       "count": 36
     },
     {
+      "category": "30-39",
+      "count": 50
+    },
+    {
+      "category": "40-49",
+      "count": 53
+    },
+    {
+      "category": "50-59",
+      "count": 50
+    },
+    {
+      "category": "60-69",
+      "count": 41
+    },
+    {
+      "category": "70-79",
+      "count": 25
+    },
+    {
       "category": "80+",
-      "count": 11
+      "count": 8
     }
   ]
 }
